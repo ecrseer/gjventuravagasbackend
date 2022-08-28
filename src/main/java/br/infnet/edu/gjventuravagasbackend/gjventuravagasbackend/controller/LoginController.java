@@ -50,11 +50,12 @@ public class LoginController {
     public ResponseEntity<Usuario> logarUsuario(@RequestBody Usuario usuario) {
 
         System.out.println("ususssssssss " + usuario);
-        var user = repository.findUsuarioByLogin(usuario.getLogin());
-        if (user != null) {
-            boolean isPasswordCorrect = user.getPassword().equals(usuario.getPassword());
+        var foundUser = repository.findUsuarioByLogin(usuario.getLogin());
+        System.out.println("find foundUser " + foundUser);
+        if (foundUser != null) {
+            boolean isPasswordCorrect = foundUser.getPassword().equals(usuario.getPassword());
             if (isPasswordCorrect) {
-                return ResponseEntity.ok(user);
+                return ResponseEntity.ok(foundUser);
             }
         }
 
