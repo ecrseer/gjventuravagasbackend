@@ -1,5 +1,6 @@
 package br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.domain;
 
+
 public class Criterio {
     String descricao;
     int perfilMinimo;
