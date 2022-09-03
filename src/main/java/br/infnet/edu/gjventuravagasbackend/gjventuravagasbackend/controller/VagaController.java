@@ -1,6 +1,8 @@
 package br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.controller;
 
 import br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.domain.Vaga;
+import br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.repository.VagaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +13,9 @@ import java.util.List;
 @RequestMapping("/vagas")
 public class VagaController {
     List<Vaga> vagas;
+
+    @Autowired
+    VagaRepository vagaRepository;
 
     public VagaController() {
         this.vagas = new ArrayList<Vaga>();
@@ -26,19 +31,16 @@ public class VagaController {
             .status(500).body("Não foi possivel inserir faltam info");
 
     @GetMapping
-    public ResponseEntity getAllvagas() {
-        return ResponseEntity.ok(vagas);
+    public ResponseEntity<List<Vaga>> getAllvagas() {
+        return ResponseEntity.ok(vagaRepository.findAll());
     }
 
     @PostMapping
     public ResponseEntity addVaga(@RequestBody Vaga vaga) {
-        // long nsei = null;
-        if (isFieldsMissing(vaga))
-            return fieldsMissingResponse;
-
-        if (vagas.add(vaga))
-            return ResponseEntity.ok(vaga);
-
+        Vaga saved = vagaRepository.save(vaga);
+        if (saved == null) {
+            return ResponseEntity.status(201).body(saved);
+        }
         return ResponseEntity.status(500).body("Não foi possivel inserir faltam info");
 
     }

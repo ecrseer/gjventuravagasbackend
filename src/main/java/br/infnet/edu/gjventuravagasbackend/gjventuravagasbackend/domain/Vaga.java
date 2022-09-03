@@ -1,14 +1,20 @@
 package br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.domain;
 
+import javax.persistence.*;
 import java.util.List;
-
+    
+@Entity(name = "vaga")
 public class Vaga {
-    long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    long idVaga;
     String cargo;
+
+    @OneToMany(mappedBy = "vagaFk")
     List<Criterio> criterios;
 
-    public Vaga(long id, String cargo) {
-        this.id = id;
+    public Vaga(long idVaga, String cargo) {
+        this.idVaga = idVaga;
         this.cargo = cargo;
     }
 
@@ -16,7 +22,7 @@ public class Vaga {
     }
 
     public long getId() {
-        return id;
+        return idVaga;
     }
 
     public String getCargo() {
@@ -28,7 +34,7 @@ public class Vaga {
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.idVaga = id;
     }
 
     public void setCargo(String cargo) {
