@@ -38,7 +38,7 @@ public class VagaController {
     @PostMapping
     public ResponseEntity addVaga(@RequestBody Vaga vaga) {
         Vaga saved = vagaRepository.save(vaga);
-        if (saved == null) {
+        if (saved != null) {
             return ResponseEntity.status(201).body(saved);
         }
         return ResponseEntity.status(500).body("Não foi possivel inserir faltam info");

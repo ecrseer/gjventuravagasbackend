@@ -1,16 +1,23 @@
 package br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
-    
+
 @Entity(name = "vaga")
-public class Vaga {
+public class Vaga implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     long idVaga;
     String cargo;
 
-    @OneToMany(mappedBy = "vagaFk")
+
+    @OneToMany(mappedBy = "vagaFk", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
     List<Criterio> criterios;
 
     public Vaga(long idVaga, String cargo) {
