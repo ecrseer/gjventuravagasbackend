@@ -1,5 +1,6 @@
 package br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.controller;
 
+import br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.domain.Empresa;
 import br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.domain.Usuario;
 import br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.domain.Vaga;
 import br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.repository.LoginRepository;
@@ -18,7 +19,7 @@ public class LoginController {
     LoginRepository repository;
 
     @GetMapping
-    Iterable<Usuario> list() {
+    Iterable<Empresa> list() {
         return repository.findAll();
     }
 
@@ -35,7 +36,7 @@ public class LoginController {
     }
 
     @PostMapping("/cadastrar")
-    public Usuario cadastrarUsuario(@RequestBody Usuario usuario) {
+    public Empresa cadastrarEmpresa(@RequestBody Empresa usuario) {
 
         if (isFieldsMissing(usuario)) {
             var add = usuarios.size() + 1;
@@ -47,10 +48,10 @@ public class LoginController {
     }
 
     @PostMapping("/logar")
-    public ResponseEntity<Usuario> logarUsuario(@RequestBody Usuario usuario) {
+    public ResponseEntity<Empresa> logarUsuario(@RequestBody Usuario usuario) {
 
         System.out.println("ususssssssss " + usuario);
-        var foundUser = repository.findUsuarioByLogin(usuario.getLogin());
+        var foundUser = repository.findEmpresaByLogin(usuario.getLogin());
         System.out.println("find foundUser " + foundUser);
         if (foundUser != null) {
             boolean isPasswordCorrect = foundUser.getPassword().equals(usuario.getPassword());

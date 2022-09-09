@@ -1,5 +1,6 @@
 package br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -19,6 +20,11 @@ public class Vaga implements Serializable {
     @OneToMany(mappedBy = "vagaFk", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
     List<Criterio> criterios;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "empresaFk")
+    @JsonBackReference
+    Empresa empresaFk;
 
     public Vaga(long idVaga, String cargo) {
         this.idVaga = idVaga;
