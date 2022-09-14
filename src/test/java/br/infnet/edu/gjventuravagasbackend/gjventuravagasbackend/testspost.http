@@ -1,11 +1,23 @@
-### GET request with a header
+### GET Empresas
 GET http://localhost:8097/login
 
-### add
+### add Empresas
 POST http://localhost:8097/login/cadastrar
 Content-Type: application/json
 
 {
-  "login": "2",
+  "login": "2@a",
+  "password": "22"
+}
+
+### GET Candidatos
+GET http://localhost:8082/login
+
+### add Candidatos
+POST http://localhost:8082/login/cadastrar
+Content-Type: application/json
+
+{
+  "login": "CAN",
   "password": "22"
 }

@@ -62,37 +62,14 @@ public class LoginController {
 
     @PutMapping
     public ResponseEntity editVaga(@RequestBody Vaga vaga) {
-        /*
-         * if (isFieldsMissing(vaga)) {
-         * return fieldsMissingResponse;
-         * }
-         * Vaga founded = vagas.stream()
-         * .filter(vagaInStream -> vagaInStream.getId() == vaga.getId())
-         * .toList().get(0);
-         *
-         * founded.setCargo(vaga.getCargo());
-         * founded.setId(vaga.getId());
-         */
-        return ResponseEntity.ok("founded");
+
+        return ResponseEntity.ok("TODO");
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteVaga(@PathVariable long id) {
-        /*
-         * if (id == 0)
-         * return fieldsMissingResponse;
-         *
-         * int index = 0;
-         * for (Vaga vaga : vagas) {
-         * if (vaga.getId() == id) {
-         * var removed = vagas.remove(index);
-         * return ResponseEntity.ok(removed);
-         * }
-         * index++;
-         * }
-         */
 
-        return ResponseEntity.status(204).body("Não foi encontrado produto com este Id");
+        return ResponseEntity.status(204).body("Não foi encontrado   com este Id");
 
     }
 }
