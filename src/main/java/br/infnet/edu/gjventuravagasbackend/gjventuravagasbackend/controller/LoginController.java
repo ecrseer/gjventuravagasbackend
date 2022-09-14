@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/loginEmpresa")
 public class LoginController {
 
     @Autowired

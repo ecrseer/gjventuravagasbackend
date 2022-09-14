@@ -1,8 +1,13 @@
 ### GET Empresas
-GET http://localhost:8097/login
+GET http://localhost:8097/oauth/token
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic ademir:1test
+
+### GET Empresas
+GET http://localhost:8097/loginEmpresa
 
 ### add Empresas
-POST http://localhost:8097/login/cadastrar
+POST http://localhost:8097/loginEmpresa/cadastrar
 Content-Type: application/json
 
 {
@@ -11,10 +16,10 @@ Content-Type: application/json
 }
 
 ### GET Candidatos
-GET http://localhost:8082/login
+GET http://localhost:8082/loginCandidato
 
 ### add Candidatos
-POST http://localhost:8082/login/cadastrar
+POST http://localhost:8082/loginCandidato/cadastrar
 Content-Type: application/json
 
 {
