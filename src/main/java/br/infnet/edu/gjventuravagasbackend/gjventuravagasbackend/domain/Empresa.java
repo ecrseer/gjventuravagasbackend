@@ -1,6 +1,10 @@
 package br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,6 +12,10 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 public class Empresa extends Usuario {
     public String causaSocial;
@@ -15,4 +23,5 @@ public class Empresa extends Usuario {
     @OneToMany(mappedBy = "empresaFk", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
     List<Vaga> vagas;
+    final String tipo = "E";
 }
