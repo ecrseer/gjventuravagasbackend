@@ -17,15 +17,3 @@ Content-Type: application/json
 
 ### GET vagas
 GET http://localhost:8097/vagasEmpresa
-
-### GET Candidatos
-GET http://localhost:8082/loginCandidato
-
-### add Candidatos
-POST http://localhost:8082/loginCandidato/cadastrar
-Content-Type: application/json
-
-{
-  "login": "CAN",
-  "password": "22"
-}

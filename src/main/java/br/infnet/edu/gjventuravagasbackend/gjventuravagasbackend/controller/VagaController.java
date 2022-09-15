@@ -33,6 +33,11 @@ public class VagaController {
         return ResponseEntity.ok(vagaRepository.findAll());
     }
 
+    @GetMapping("{idVaga}")
+    public ResponseEntity<Vaga> getOneVaga(@PathVariable long idVaga) {
+        return ResponseEntity.ok(vagaRepository.findVagaByIdVaga(idVaga));
+    }
+
     @PostMapping
     public ResponseEntity addVaga(@RequestBody Vaga vaga) {
 
