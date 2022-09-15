@@ -1,7 +1,7 @@
-### GET Empresas
-GET http://localhost:8097/oauth/token
+### POST AUTHEmpresas
+POST http://localhost:8097/oauth/token
 Content-Type: application/x-www-form-urlencoded
-Authorization: Basic ademir:1test
+Authorization: Basic ademir testo
 
 ### GET Empresas
 GET http://localhost:8097/loginEmpresa
