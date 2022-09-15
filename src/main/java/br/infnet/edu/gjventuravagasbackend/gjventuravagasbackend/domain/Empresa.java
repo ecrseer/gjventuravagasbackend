@@ -21,7 +21,8 @@ public class Empresa extends Usuario {
     public String causaSocial;
 
     @OneToMany(mappedBy = "empresaFk", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "vagasDaEmpresa")
     List<Vaga> vagas;
+
     final String tipo = "E";
 }

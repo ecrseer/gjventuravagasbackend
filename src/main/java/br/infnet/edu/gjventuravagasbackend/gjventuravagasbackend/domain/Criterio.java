@@ -2,10 +2,18 @@ package br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity(name = "criterio")
 public class Criterio implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -21,20 +29,4 @@ public class Criterio implements Serializable {
     @JsonBackReference
     Vaga vagaFk;
 
-    public Criterio(String descricao, int perfilMinimo) {
-        this.descricao = descricao;
-        this.perfilMinimo = perfilMinimo;
-    }
-
-    public Criterio() {
-
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public int getPerfilMinimo() {
-        return perfilMinimo;
-    }
 }

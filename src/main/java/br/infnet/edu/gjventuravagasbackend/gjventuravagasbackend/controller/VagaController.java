@@ -10,19 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/vagas")
+@RequestMapping("/vagasEmpresa")
 public class VagaController {
     List<Vaga> vagas;
 
     @Autowired
     VagaRepository vagaRepository;
 
-    public VagaController() {
-        this.vagas = new ArrayList<Vaga>();
-    }
+
 
     private boolean isFieldsMissing(Vaga vaga) {
-        if (vaga.getId() == 0 || vaga.getCargo() == null)
+        if (vaga.getIdVaga() == 0 || vaga.getCargo() == null)
             return true;
         return false;
     }
@@ -37,6 +35,7 @@ public class VagaController {
 
     @PostMapping
     public ResponseEntity addVaga(@RequestBody Vaga vaga) {
+
         Vaga saved = vagaRepository.save(vaga);
         if (saved != null) {
             return ResponseEntity.status(201).body(saved);
@@ -52,11 +51,11 @@ public class VagaController {
             return fieldsMissingResponse;
         }
         Vaga founded = vagas.stream()
-                .filter(vagaInStream -> vagaInStream.getId() == vaga.getId())
+                .filter(vagaInStream -> vagaInStream.getIdVaga() == vaga.getIdVaga())
                 .toList().get(0);
 
         founded.setCargo(vaga.getCargo());
-        founded.setId(vaga.getId());
+        founded.setIdVaga(vaga.getIdVaga());
 
         return ResponseEntity.ok(founded);
     }
@@ -68,7 +67,7 @@ public class VagaController {
 
         int index = 0;
         for (Vaga vaga : vagas) {
-            if (vaga.getId() == id) {
+            if (vaga.getIdVaga() == id) {
                 var removed = vagas.remove(index);
                 return ResponseEntity.ok(removed);
             }
