@@ -22,6 +22,7 @@ public class Criterio implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     long idCriterio;
     String descricao;
+    int peso;
     int perfilMinimo;
 
     @ManyToOne(fetch = FetchType.LAZY)
