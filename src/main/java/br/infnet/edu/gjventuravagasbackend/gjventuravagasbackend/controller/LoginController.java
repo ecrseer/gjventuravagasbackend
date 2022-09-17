@@ -6,6 +6,7 @@ import br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.domain.Vaga;
 import br.infnet.edu.gjventuravagasbackend.gjventuravagasbackend.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class LoginController {
     LoginRepository repository;
 
     @GetMapping
-    Iterable<Empresa> list() {
+    List<Empresa> list() {
         return repository.findAll();
     }
 
@@ -37,7 +38,8 @@ public class LoginController {
 
     @PostMapping("/cadastrar")
     public Empresa cadastrarEmpresa(@RequestBody Empresa usuario) {
- 
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        usuario.setPassword(encoder.encode(usuario.getPassword()));
         var usr = repository.save(usuario);
         return usr;
 
